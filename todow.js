@@ -38,7 +38,7 @@ function addTask(tasksList, titre) {
         titre: titre,
         termine: false
     };
-    tasksList.push(newTask);                                            //najoute la tache dans la liste
+    tasksList.push(newTask);                                            //ajoute la tache dans la liste
     sauvegarderToDoList(tasksList);
     console.log(`La tâche "${titre}" a été ajoutée.`);
 }
@@ -89,23 +89,23 @@ function main() {
                     UserInterface.question("Que souhaitez-vous modifier? ([1]-le titre / [2]-l'état de la tâche / [3]-quitter): ", (action) => {
                         switch (action) {
                             case "1":
-                                UserInterface.question("Entrez le nouveau titre de la tâche : ", (titre) => {
+                                UserInterface.question("Nouveau titre de la tâche : ", (titre) => {
                                     modifTask(tasksList, parseInt(id), titre); // Convertit l'ID en nombre entier
                                     main();
                                 });
                                 break;
             
                             case "2":
-                                UserInterface.question("Avez-vous terminé cette tâche? (oui/non) : ", (termine) => {
-                                    if (termine === "oui") {
+                                UserInterface.question("Avez-vous terminé cette tâche? [y]/[n]) : ", (termine) => {
+                                    if (termine === "y") {
                                         taskDone(tasksList, parseInt(id));
                                         console.log(`Statut de la tâche ${id} modifié comme faite, retour au menu principal.`);
                                         main();
-                                    } else if (termine === "non") {
-                                        console.log(`Statut de la tâche ${id} non modifié.`);
+                                    } else if (termine === "n") {
+                                        console.log(`Statut de la tâche ${id} non modifié, retour au menu principal.`);
                                         main();
                                     } else {
-                                        console.log("Réponse invalide, retour au menu principal.");
+                                        console.log("Choix invalide, retour au menu principal.");
                                         main();
                                     }
                                 });
